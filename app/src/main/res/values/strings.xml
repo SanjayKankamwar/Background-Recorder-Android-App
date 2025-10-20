@@ -1,16 +1,3 @@
 <resources>
     <string name="app_name">Audio Recorder</string>
-    <string name="notification_channel_name">Recording Service</string>
-    <string name="notification_channel_description">Shows when audio recording is in progress</string>
-    <string name="notification_title">Recording Audio</string>
-    <string name="notification_text">Tap to return to app</string>
-    <string name="start_recording">Start</string>
-    <string name="stop_recording">Stop</string>
-    <string name="recording_status">Recording...</string>
-    <string name="ready_status">Ready to record</string>
-    <string name="recent_recordings">Recent Recordings</string>
-    <string name="no_recordings">No recordings yet</string>
-    <string name="tap_start_hint">Tap Start to begin recording</string>
-    <string name="play_recording">Play recording</string>
-    <string name="delete_recording">Delete recording</string>
 </resources>

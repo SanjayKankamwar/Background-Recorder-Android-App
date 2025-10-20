@@ -5,62 +5,45 @@ import android.media.MediaPlayer
 import java.io.File
 
 class MediaPlayerManager(private val context: Context) {
-    
+
     private var mediaPlayer: MediaPlayer? = null
     private var currentFile: File? = null
-    
-    fun play(file: File, onCompletion: () -> Unit = {}) {
-        stop()
-        
-        try {
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(file.absolutePath)
-                prepare()
-                start()
-                setOnCompletionListener {
-                    onCompletion()
-                    release()
-                    mediaPlayer = null
-                }
-            }
-            currentFile = file
-        } catch (e: Exception) {
-            e.printStackTrace()
+
+    fun play(file: File, onCompletion: () -> Unit) {
+        if (mediaPlayer?.isPlaying == true) {
+            mediaPlayer?.stop()
         }
-    }
-    
-    fun pause() {
-        mediaPlayer?.let {
-            if (it.isPlaying) {
-                it.pause()
+        mediaPlayer?.release()
+
+        currentFile = file
+        mediaPlayer = MediaPlayer().apply {
+            setDataSource(file.absolutePath)
+            prepare()
+            start()
+            setOnCompletionListener { 
+                onCompletion()
+                this@MediaPlayerManager.currentFile = null
             }
         }
     }
-    
-    fun resume() {
-        mediaPlayer?.let {
-            if (!it.isPlaying) {
-                it.start()
-            }
-        }
-    }
-    
+
     fun stop() {
-        mediaPlayer?.let {
-            if (it.isPlaying) {
-                it.stop()
-            }
-            it.release()
-        }
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
         mediaPlayer = null
         currentFile = null
     }
-    
-    fun isPlaying(): Boolean = mediaPlayer?.isPlaying ?: false
-    
-    fun getCurrentFile(): File? = currentFile
-    
+
+    fun isPlaying(): Boolean {
+        return mediaPlayer?.isPlaying ?: false
+    }
+
+    fun getCurrentFile(): File? {
+        return currentFile
+    }
+
     fun release() {
-        stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 }

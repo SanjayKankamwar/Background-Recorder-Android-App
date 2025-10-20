@@ -3,7 +3,6 @@ package com.example.audiorecorder
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
 import android.media.MediaRecorder
@@ -11,17 +10,15 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.io.IOException
 
 class AudioRecordingService : Service() {
 
     private var mediaRecorder: MediaRecorder? = null
-    private var outputFile: String? = null
+    private var isRecording = false
 
     companion object {
-        private const val CHANNEL_ID = "AudioRecordingChannel"
+        private const val CHANNEL_ID = "AudioRecordingServiceChannel"
         private const val NOTIFICATION_ID = 1
     }
 
@@ -31,13 +28,8 @@ class AudioRecordingService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        // Start foreground service with notification
-        val notification = createNotification()
-        startForeground(NOTIFICATION_ID, notification)
-
-        // Start recording
+        startForeground(NOTIFICATION_ID, createNotification())
         startRecording()
-
         return START_STICKY
     }
 
@@ -46,91 +38,60 @@ class AudioRecordingService : Service() {
         stopRecording()
     }
 
-    override fun onBind(intent: Intent?): IBinder? {
-        return null
-    }
-
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                CHANNEL_ID,
-                "Audio Recording",
-                NotificationManager.IMPORTANCE_LOW
-            ).apply {
-                description = "Recording audio in background"
-            }
-
-            val notificationManager = getSystemService(NotificationManager::class.java)
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
-
-    private fun createNotification(): Notification {
-        val notificationIntent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            notificationIntent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-        return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Recording Audio")
-            .setContentText("Recording in progress...")
-            .setSmallIcon(android.R.drawable.ic_btn_speak_now)
-            .setContentIntent(pendingIntent)
-            .setOngoing(true)
-            .build()
-    }
-
     private fun startRecording() {
-        try {
-            // Create output file
-            val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-            val fileName = "recording_$timestamp.m4a"
-            val storageDir = getExternalFilesDir(null)
-            outputFile = File(storageDir, fileName).absolutePath
+        val file = File(getExternalFilesDir(null), "recording_${System.currentTimeMillis()}.m4a")
 
-            // Initialize MediaRecorder
-            mediaRecorder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                MediaRecorder(this)
-            } else {
-                @Suppress("DEPRECATION")
-                MediaRecorder()
-            }
+        mediaRecorder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            MediaRecorder(this)
+        } else {
+            MediaRecorder()
+        }
 
-            mediaRecorder?.apply {
-                setAudioSource(MediaRecorder.AudioSource.MIC)
-                setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-                setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-                setOutputFile(outputFile)
-                setAudioEncodingBitRate(128000)
-                setAudioSamplingRate(44100)
-                
+        mediaRecorder?.apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setOutputFile(file.absolutePath)
+            try {
                 prepare()
                 start()
+                isRecording = true
+            } catch (e: IOException) {
+                // Handle exception
             }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-            stopSelf()
         }
     }
 
     private fun stopRecording() {
-        try {
-            mediaRecorder?.apply {
-                stop()
-                release()
-            }
-            mediaRecorder = null
-
-            // Log the file location
-            outputFile?.let {
-                android.util.Log.d("AudioRecorder", "Recording saved to: $it")
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        mediaRecorder?.apply {
+            stop()
+            release()
         }
+        mediaRecorder = null
+        isRecording = false
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val serviceChannel = NotificationChannel(
+                CHANNEL_ID,
+                "Audio Recording Service Channel",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(serviceChannel)
+        }
+    }
+
+    private fun createNotification(): Notification {
+        return NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("Audio Recorder")
+            .setContentText("Recording in background...")
+            .setSmallIcon(R.drawable.ic_mic)
+            .build()
+    }
+
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
     }
 }

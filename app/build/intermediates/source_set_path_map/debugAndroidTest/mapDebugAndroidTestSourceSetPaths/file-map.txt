@@ -1,0 +1,4 @@
+com.example.audiorecorder.test.app-androidTest-0 C:\Inventory\Coding\background-audio-recorder\app\build\generated\res\resValues\androidTest\debug
+com.example.audiorecorder.test.app-mergeDebugAndroidTestResources-1 C:\Inventory\Coding\background-audio-recorder\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.audiorecorder.test.app-mergeDebugAndroidTestResources-2 C:\Inventory\Coding\background-audio-recorder\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.audiorecorder.test.app-debugAndroidTest-3 C:\Inventory\Coding\background-audio-recorder\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

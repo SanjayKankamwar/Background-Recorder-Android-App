@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_play_arrow.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_play_arrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_mic_off.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_mic_off.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_stop.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_stop.xml"
+    },
+    {
+        "merged": "com.example.audiorecorder.app-debug-4:/anim_pulse.xml.flat",
+        "source": "com.example.audiorecorder.app-main-6:/anim/pulse.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\layout_item_recording.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\layout\\item_recording.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_status_card_background.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\status_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_delete.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_recording_indicator.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\recording_indicator.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_item_background.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_content_background.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\content_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_ic_mic.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\ic_mic.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\drawable_header_background.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\drawable\\header_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\sanja\\.gradle\\daemon\\8.11.1\\com.example.audiorecorder.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    }
+]
